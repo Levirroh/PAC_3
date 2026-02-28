@@ -1,0 +1,53 @@
+[gd_scene format=3 uid="uid://cjdh0ymb1rtrf"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_sh265"]
+load_path = "res://.godot/imported/playerGrey_walk1.png-cc737e5947095223c3494468704ca885.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_4flbx"]
+load_path = "res://.godot/imported/playerGrey_walk2.png-f5cfaf08bfb66680dc47cac4becdc491.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_onrkg"]
+load_path = "res://.godot/imported/playerGrey_up1.png-3aa61131c0882580ef256c2e63b2c4f5.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_i3pqv"]
+load_path = "res://.godot/imported/playerGrey_up2.png-1a4d6b79dc0f594823072cc61cec8a24.ctex"
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hqtel"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("CompressedTexture2D_sh265")
+}, {
+"duration": 1.0,
+"texture": SubResource("CompressedTexture2D_4flbx")
+}],
+"loop": true,
+"name": &"up",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("CompressedTexture2D_onrkg")
+}, {
+"duration": 1.0,
+"texture": SubResource("CompressedTexture2D_i3pqv")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sweqy"]
+radius = 27.0
+height = 54.0
+
+[node name="Player" type="Area2D" unique_id=1637157208]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=987562162]
+scale = Vector2(0.5, 0.5)
+sprite_frames = SubResource("SpriteFrames_hqtel")
+animation = &"walk"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=3737292]
+position = Vector2(0, -7)
+shape = SubResource("CapsuleShape2D_sweqy")
