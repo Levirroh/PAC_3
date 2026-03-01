@@ -1,13 +1,10 @@
 [gd_scene format=3 uid="uid://cjdh0ymb1rtrf"]
 
+[ext_resource type="Script" uid="uid://c32ef024h81cc" path="res://player.gd" id="1_i3pqv"]
 [ext_resource type="Texture2D" uid="uid://b8a6d1d3i3gtm" path="res://assets/dodge_the_creeps_2d_assets/art/playerGrey_up1.png" id="1_onrkg"]
 [ext_resource type="Texture2D" uid="uid://die5086otixr1" path="res://assets/dodge_the_creeps_2d_assets/art/playerGrey_up2.png" id="2_i3pqv"]
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_hqtel"]
-load_path = "res://.godot/imported/playerGrey_walk1.png-5f7b70b1914b91d3cb6054d8b7969d05.ctex"
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_sweqy"]
-load_path = "res://.godot/imported/playerGrey_walk2.png-7955ff8b4113533423fb11fb8a78266b.ctex"
+[ext_resource type="Texture2D" uid="uid://fnhmkjpn2y0y" path="res://assets/dodge_the_creeps_2d_assets/art/playerGrey_walk1.png" id="4_sweqy"]
+[ext_resource type="Texture2D" uid="uid://c2xq4h3tul05l" path="res://assets/dodge_the_creeps_2d_assets/art/playerGrey_walk2.png" id="5_2hs0m"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_2hs0m"]
 animations = [{
@@ -24,10 +21,10 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("CompressedTexture2D_hqtel")
+"texture": ExtResource("4_sweqy")
 }, {
 "duration": 1.0,
-"texture": SubResource("CompressedTexture2D_sweqy")
+"texture": ExtResource("5_2hs0m")
 }],
 "loop": true,
 "name": &"walk",
@@ -39,13 +36,16 @@ radius = 27.0
 height = 54.0
 
 [node name="Player" type="Area2D" unique_id=896709393]
-metadata/_edit_group_ = true
+position = Vector2(212, 369)
+script = ExtResource("1_i3pqv")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=887272879]
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_2hs0m")
-animation = &"up"
+animation = &"walk"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1126916034]
 position = Vector2(0, -7)
 shape = SubResource("CapsuleShape2D_onrkg")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
